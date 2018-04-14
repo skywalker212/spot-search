@@ -1,0 +1,32 @@
+{
+  "name": "spot-search",
+  "version": "1.0.0",
+  "description": "a spotify track search engine",
+  "main": "app.js",
+  "dependencies": {
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.3",
+    "querystring": "^0.2.0",
+    "request": "^2.85.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skywalker212/spot-search.git"
+  },
+  "keywords": [
+    "spotify",
+    "music",
+    "api",
+    "node"
+  ],
+  "author": "Akash Gajjar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/skywalker212/spot-search/issues"
+  },
+  "homepage": "https://github.com/skywalker212/spot-search#readme"
+}
