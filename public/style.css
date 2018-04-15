@@ -1,31 +1,57 @@
-#login, #loggedin {
+#login,
+#loggedin {
     display: none;
 }
 
-body{
+body {
     font-family: 'Roboto Mono', monospace
 }
 
-.h1spot{
+.h1spot {
     font-size: 50px;
     margin: 30px 0;
 }
 
-.footerp{
+.footerp {
     margin-top: 10px;
 }
 
-.desc{
+.name {
+    font-weight: bold;
+}
+
+#user-profile {
+    font-size: 20px;
+}
+
+.search-main {
+    width: 60%;
+    margin: 20px auto;
+}
+
+.gen-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.desc {
     font-weight: 100;
     font-size: 20px;
     width: 80%;
     margin: 0 auto;
     margin-bottom: 20px;
 }
-  
+
+.artist,
+.track,
+.album {
+    width: 80%;
+    margin: 10px auto;
+}
+
 .text-overflow {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     width: 500px;
-  }
+}

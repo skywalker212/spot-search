@@ -1,52 +1,155 @@
 <!doctype html>
 <html>
-  <head>
-    <title>spot-search</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
-    <link rel="icon" href="icon.png">
-  </head>
 
-  <body>
-    <div class="container">
-      <div id="login" class="text-center">
-        <h1 class="h1spot">spot-search</h1>
-        <p class="desc">A search engine for music geeks who want to know detailed info of a song from Spotify, made using Spotify API.</p>
-        <a href="/login" class="btn btn-primary">Login using Spotify</a>
-      </div>
-      <div id="loggedin">
-        <div id="user-profile">
-        </div>
-        <div id="oauth">
-        </div>
-      </div>
-      <p class="text-center footerp">made with <span style="color:red">&#9829</span> by <a href="https://github.com/skywalker212" style="text-decoration:none" target="_blank">akash</a></p>
+<head>
+  <title>spot-search</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link rel="icon" href="icon.png">
+</head>
+
+<body>
+  <div class="container">
+    <h1 class="h1spot text-center">spot-search</h1>
+    <div id="login" class="text-center">
+      <p class="desc">A search engine for music geeks who want to know detailed info of a song from Spotify, made using Spotify API.</p>
+      <a href="/login" class="btn btn-primary">Login using Spotify</a>
     </div>
-
-    <script id="user-profile-template" type="text/x-handlebars-template">
-      <h1>Logged in as {{display_name}}</h1>
-      <div class="media">
-        <div class="pull-left">
-          <img class="media-object" width="150" src="{{images.0.url}}" />
-        </div>
-        <div class="media-body">
-          <dl class="dl-horizontal">
-            <dt>Display name</dt><dd class="clearfix">{{display_name}}</dd>
-            <dt>Id</dt><dd>{{id}}</dd>
-            <dt>Email</dt><dd>{{email}}</dd>
-            <dt>Spotify URI</dt><dd><a href="{{external_urls.spotify}}">{{external_urls.spotify}}</a></dd>
-            <dt>Link</dt><dd><a href="{{href}}">{{href}}</a></dd>
-            <dt>Profile Image</dt><dd class="clearfix"><a href="{{images.0.url}}">{{images.0.url}}</a></dd>
-            <dt>Country</dt><dd>{{country}}</dd>
-          </dl>
-        </div>
+    <div id="loggedin">
+      <div id="user-profile" class="text-center">
       </div>
-    </script>
+      <div class="search-main text-center">
+        <form class="sub-src">
+          <div class="input-group">
+            <input type="text" class="form-control text-content" placeholder="Enter Spotify URI of album/artist/track">
+            <div class="input-group-btn">
+              <button class="btn btn-default src-btn" type="submit">
+                <i class="glyphicon glyphicon-search"></i>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div id="artist-info"></div>
+      <div id="track-info"></div>
+      <div id="album-info"></div>
+    </div>
+    <p class="text-center footerp">made with
+      <span style="color:red">&#9829</span> by
+      <a href="https://github.com/skywalker212" style="text-decoration:none" target="_blank">akash</a>
+    </p>
+  </div>
 
-    <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
-    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-    <script src="script.js"></script>
-  </body>
+  <script id="artist-template" type="text/x-handlebars-template">
+    <div class="media artist">
+      <div class="pull-left media-top">
+        <img class="media-object image" width="200" src="{{images.0.url}}" />
+      </div>
+      <div class="media-body details">
+        <dl class="dl-horizontal">
+          <dt>Artist Name</dt>
+          <dd>{{name}}</dd>
+          <dt>Popularity</dt>
+          <dd>{{popularity}}</dd>
+          <dt>Followers</dt>
+          <dd>{{followers.total}}</dd>
+          <dt>Genre(s)</dt>
+          <dd>
+            <ul class="gen-list">{{#each genres}}
+              <li class='item'>{{this}}</li>{{/each}}</ul>
+          </dd>
+          <dt>Spotify URL</dt>
+          <dd>
+            <a class='link' href={{external_urls.spotify}} target="_blank">{{name}}</a>
+          </dd>
+          <dt></dt>
+        </dl>
+      </div>
+    </div>
+  </script>
+
+  <script id="track-template" type="text/x-handlebars-template">
+    <div class="media track">
+      <div class="pull-left media-top">
+        <img class="media-object image" width="200" src="{{album.images.0.url}}" />
+      </div>
+      <div class="media-body details">
+        <dl class="dl-horizontal">
+          <dt>Song Name</dt>
+          <dd>{{name}}
+            <a href="{{preview_url}}" target="_blank">preview</a>
+          </dd>
+          <dt>Popularity</dt>
+          <dd>{{popularity}}</dd>
+          <dt>Spotify URL</dt>
+          <dd>
+            <a class='link' href={{external_urls.spotify}} target="_blank">{{name}}</a>
+          </dd>
+          <dt>Duration (in ms)</dt>
+          <dd>{{duration_ms}}</dd>
+          <dt>Artists</dt>
+          <dd>
+            <ul class="gen-list">{{#each artists}}
+              <li class='item'>
+                <a class='link' href='{{external_urls.spotify}}' target="_blank">{{name}}</a>
+              </li>{{/each}}</ul>
+          </dd>
+          <dt>Audio Features</dt>
+          <dd class="audio-feature">
+            <button class="btn btn-primary" onclick='getFeatures("{{id}}")'>Get Audio Features</button>
+          </dd>
+        </dl>
+      </div>
+    </div>
+  </script>
+
+  <script id="album-template" type="text/x-handlebars-template">
+    <div class="media album">
+      <div class="pull-left media-top">
+        <img class="media-object image" width="200" src="{{images.0.url}}" />
+      </div>
+      <div class="media-body details">
+        <dl class="dl-horizontal">
+          <dt>Album Name</dt>
+          <dd>{{name}}</dd>
+          <dt>Popularity</dt>
+          <dd>{{popularity}}</dd>
+          <dt>Spotify URL</dt>
+          <dd>
+            <a class='link' href={{external_urls.spotify}} target="_blank">{{name}}</a>
+          </dd>
+          <dt>Release Date</dt>
+          <dd>{{release_date}}</dd>
+          <dt>Genre(s)</dt>
+          <dd>
+            <ul class="gen-list">{{#each genres}}
+              <li class='item'>{{this}}</li>{{/each}}</ul>
+          </dd>
+          <dt>Artists</dt>
+          <dd>
+            <ul class="gen-list">{{#each artists}}
+              <li class='item'>
+                <a class='link' href='{{external_urls.spotify}}' target="_blank">{{name}}</a>
+              </li>{{/each}}</ul>
+          </dd>
+          <dt>Track List</dt>
+          <dd>
+            <ul class="gen-list">{{#each tracks.items}}
+              <li class='item'>
+                <a class='link' href='{{external_urls.spotify}}' target="_blank">{{name}}</a>
+              </li>{{/each}}</ul>
+          </dd>
+        </dl>
+      </div>
+    </div>
+  </script>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
+  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
 </html>
-
