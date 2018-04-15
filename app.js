@@ -14,7 +14,7 @@ var cookieParser = require('cookie-parser');
 
 var client_id = '9d9348d81e4341b8b01e5c0812e07a3e'; // Your client id
 var client_secret = '6e85b6dcbc194d68987c1ffeb220d02d'; // Your secret
-var redirect_uri = 'http://localhost:443/callback'; // Your redirect uri
+var redirect_uri = 'http://localhost:3000/callback'; // Your redirect uri
 
 /**
  * Generates a random string containing numbers and letters
@@ -135,5 +135,5 @@ app.get('/refresh_token', function (req, res) {
   });
 });
 
-console.log('Listening on 443');
-app.listen(443);
+console.log('Listening on 3000');
+app.listen(3000);

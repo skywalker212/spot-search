@@ -10,7 +10,7 @@ The server will do the job of obtaining the authorizaiton token using client key
 2. cd into the direcotry
 3. run `npm install` (i'll assume that you have installed node hence npm)
 4. run `npm start` to run this app locally
-5. go to `localhost:443` using your preferred web browser (don't use internet explorer/edge :P)
+5. go to `localhost:3000` using your preferred web browser (don't use internet explorer/edge :P)
 6. login into spotify using your spotify credentials, in the authentication window.
 7. open Track/Artist/Album page on Spotify App/Web Player
 8. in share options, copy URI of the Track/Artist/Album
