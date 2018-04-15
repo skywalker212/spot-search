@@ -6,17 +6,17 @@ The server will do the job of obtaining the authorizaiton token using client key
 
 ## How to use
 
-    - clone this repository
-    - cd into the direcotry
-    - run `npm install` (i'll assume that you have installed node hence npm)
-    - run `npm start` to run this app locally
-    - go to `localhost:443` using your preferred web browser (don't use internet explorer/edge :P)
-    - login into spotify using your spotify credentials, in the authentication window.
-    - open Track/Artist/Album page on Spotify App/Web Player
-    - in share options, copy URI of the Track/Artist/Album
-    - paste it in the search-box of spot-search
-    - click search
-    - enjoy the results!
+1. clone this repository
+2. cd into the direcotry
+3. run `npm install` (i'll assume that you have installed node hence npm)
+4. run `npm start` to run this app locally
+5. go to `localhost:443` using your preferred web browser (don't use internet explorer/edge :P)
+6. login into spotify using your spotify credentials, in the authentication window.
+7. open Track/Artist/Album page on Spotify App/Web Player
+8. in share options, copy URI of the Track/Artist/Album
+9. paste it in the search-box of spot-search
+10. click search
+11. enjoy the results!
 
 ## Category wise Info
 
@@ -24,30 +24,30 @@ Spotify cover photo for every catagory is also available.
 
 ### Artist
 
-    - Artist Name
-    - Popularity
-    - Followers
-    - Genres
-    - Spotify URL
+- Artist Name
+- Popularity
+- Followers
+- Genres
+- Spotify URL
 
 ### Track
 
-    - Song Name
-    - Popularity
-    - Spotify URL
-    - Duration (in miliseconds, straight outta API without any conversion :P)
-    - Artist(s)
-    - Audio Features
-        danceability, energy, loudness, speechiness, acousticness, instrumentalness, liveness, valence, tempo
+- Song Name
+- Popularity
+- Spotify URL
+- Duration (in miliseconds, straight outta API without any conversion :P)
+- Artist(s)
+- Audio Features
+    danceability, energy, loudness, speechiness, acousticness, instrumentalness, liveness, valence, tempo
 
 ### Album
 
-    - Album Name
-    - Popularity
-    - Spotify URL
-    - Relese Date
-    - Artist(s)
-    - Track List (with spotify player link to each track)
+- Album Name
+- Popularity
+- Spotify URL
+- Relese Date
+- Artist(s)
+- Track List (with spotify player link to each track)
 
 -------------------------------------------------------------------------------------
 
