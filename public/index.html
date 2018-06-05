@@ -149,6 +149,41 @@
     </div>
   </script>
 
+  <script id="search-template" type="text/x-handlebars-template">
+    <div class="media track">
+      <div class="pull-left media-top">
+        <img class="media-object image" width="200" src="{{album.images.0.url}}" />
+      </div>
+      <div class="media-body details">
+        <dl class="dl-horizontal">
+          <dt>Song Name</dt>
+          <dd>{{name}}
+            <a href="{{preview_url}}" target="_blank">preview</a>
+          </dd>
+          <dt>Popularity</dt>
+          <dd>{{popularity}}</dd>
+          <dt>Spotify URL</dt>
+          <dd>
+            <a class='link' href={{external_urls.spotify}} target="_blank">{{name}}</a>
+          </dd>
+          <dt>Duration (in ms)</dt>
+          <dd>{{duration_ms}}</dd>
+          <dt>Artists</dt>
+          <dd>
+            <ul class="gen-list">{{#each artists}}
+              <li class='item'>
+                <a class='link' href='{{external_urls.spotify}}' target="_blank">{{name}}</a>
+              </li>{{/each}}</ul>
+          </dd>
+          <dt>Audio Features</dt>
+          <dd class="audio-feature">
+            <button class="btn btn-primary" onclick='getFeatures("{{id}}")'>Get Audio Features</button>
+          </dd>
+        </dl>
+      </div>
+    </div>
+  </script>
+
   <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
   <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
   <script src="script.js"></script>

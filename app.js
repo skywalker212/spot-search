@@ -11,6 +11,7 @@ var express = require('express'); // Express web server framework
 var request = require('request'); // "Request" library
 var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
+const port = process.env.PORT || 3000;
 
 var client_id = '9d9348d81e4341b8b01e5c0812e07a3e'; // Your client id
 var client_secret = '6e85b6dcbc194d68987c1ffeb220d02d'; // Your secret
@@ -135,5 +136,4 @@ app.get('/refresh_token', function (req, res) {
   });
 });
 
-console.log('Listening on 3000');
-app.listen(3000);
+app.listen(port);

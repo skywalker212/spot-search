@@ -122,7 +122,19 @@ $('.src-btn').on('click', function (event) {
         alert('Sorry, currently we only show info of Artist/Album/Track');
       }
     } else {
-      alert("Please enter valid URI, you can't fool me!");
+      $('#track-info').html("");
+        $('#track-info').show();
+        $('#album-info').hide();
+        $('#artist-info').hide();
+        $.ajax({
+          url: 'https://api.spotify.com/v1/search'+'?q='+value+'&type=track',
+          headers: {
+            'Authorization': 'Bearer ' + access_token
+          },
+          success: function (data) {
+            trackPlaceholder.innerHTML = trackTemplate(data.tracks.items[0]);
+          }
+        });
     }
   }
 
